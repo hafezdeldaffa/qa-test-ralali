@@ -1,0 +1,703 @@
+{
+	"info": {
+		"_postman_id": "7a41ead1-cc7b-49b4-a595-b86b1cf14a95",
+		"name": "Ralali Cakes API Automation Case",
+		"description": "Ralali Cakes API Automation Case. Test 3 - Automation API. Submitted by Hafezd El Daffa.\n\nLink API: [https://cake-apii.herokuapp.com/api/](https://cake-apii.herokuapp.com/api/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11143202"
+	},
+	"item": [
+		{
+			"name": "Get All Cakes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body status should be success', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.status).to.eql('success')\r",
+							"})\r",
+							"\r",
+							"pm.test('response body object should have correct property', () => {\r",
+							"    const responsJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responsJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responsJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responsJson).to.haveOwnProperty('message');\r",
+							"    pm.expect(responsJson).to.haveOwnProperty('data')\r",
+							"\r",
+							"    pm.expect(responsJson.status).to.equals('success');\r",
+							"    pm.expect(responsJson.data).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data array should have contains correct property', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const data = responseJson.data;\r",
+							"    \r",
+							"    pm.expect(data).to.be.an('array');\r",
+							"    data.forEach((property) => {\r",
+							"        pm.expect(property).to.haveOwnProperty('id');\r",
+							"        pm.expect(property).to.haveOwnProperty('name');\r",
+							"        pm.expect(property).to.haveOwnProperty('comment');\r",
+							"        pm.expect(property).to.haveOwnProperty('imageUrl');\r",
+							"        pm.expect(property).to.haveOwnProperty('yumFactor');\r",
+							"        pm.expect(property).to.haveOwnProperty('createdAt');\r",
+							"        pm.expect(property).to.haveOwnProperty('updatedAt');\r",
+							"\r",
+							"        pm.expect(property.id).to.be.a('number');\r",
+							"        pm.expect(property.name).to.be.a('string');\r",
+							"        pm.expect(property.comment).to.be.a('string');\r",
+							"        pm.expect(property.imageUrl).to.be.a('string');\r",
+							"        pm.expect(property.yumFactor).to.be.a('number');\r",
+							"        pm.expect(property.createdAt).to.be.a('string');\r",
+							"        pm.expect(property.updatedAt).to.be.a('string');\r",
+							"    })\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single cake with correct id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response code should be 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should an object', () =>  {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body object should contain correct property', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message')\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"});\r",
+							"\r",
+							"pm.test('cake object should contain correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('id');\r",
+							"    pm.expect(data).to.haveOwnProperty('name');\r",
+							"    pm.expect(data).to.haveOwnProperty('comment');\r",
+							"    pm.expect(data).to.haveOwnProperty('imageUrl');\r",
+							"    pm.expect(data).to.haveOwnProperty('yumFactor');\r",
+							"    pm.expect(data).to.haveOwnProperty('createdAt');\r",
+							"    pm.expect(data).to.haveOwnProperty('updatedAt');\r",
+							"\r",
+							"    pm.expect(data.id).to.equals(18);\r",
+							"    pm.expect(data.name).to.equals('Calymperes Moss 33 updated');\r",
+							"    pm.expect(data.comment).to.equals('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.');\r",
+							"    pm.expect(data.imageUrl).to.equals('dummyimage.com/131x100.png/ff4444/ffffff');\r",
+							"    pm.expect(data.yumFactor).to.equals(5)\r",
+							"    pm.expect(data.createdAt).to.not.equals('');\r",
+							"    pm.expect(data.updatedAt).to.not.equals('');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/18",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single cake with invalid id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response code should be 404', () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should an object', () =>  {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body object should contain correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('error');\r",
+							"    pm.expect(responseJson.message).to.equals('Cake with specified ID does not exist');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/99",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new cakes with valid data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 201', () => {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data')\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('success');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain id', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('id');\r",
+							"    pm.expect(data.id).not.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Calymperes Moss 41\",\r\n    \"comment\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus\",\r\n    \"imageUrl\": \"http://dummyimage.com/204x100.png/cc0000/ffffff\",\r\n    \"yumFactor\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new cake with invalid data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 422', () => {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('error');\r",
+							"     pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('error');\r",
+							"    pm.expect(responseJson.error.name).to.equals('name field is required');\r",
+							"    pm.expect(responseJson.statusCode).to.equals(422);\r",
+							"    pm.expect(responseJson.message).to.equals('Validation failed')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus\",\r\n    \"imageUrl\": \"http://dummyimage.com/204x100.png/cc0000/ffffff\",\r\n    \"yumFactor\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new cake with already exist data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 409', () => {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('error');\r",
+							"     pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('error');\r",
+							"    pm.expect(responseJson.error).to.be.null;\r",
+							"    pm.expect(responseJson.statusCode).to.equals(409);\r",
+							"    pm.expect(responseJson.message).to.equals('A cake with the specified name already exists')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Calymperes Moss 33\",\r\n    \"comment\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus\",\r\n    \"imageUrl\": \"http://dummyimage.com/204x100.png/cc0000/ffffff\",\r\n    \"yumFactor\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a cake with valid data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data')\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('success');\r",
+							"    pm.expect(responseJson.statusCode).to.equals(200);\r",
+							"    pm.expect(responseJson.message).to.equals('success');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data array should have contains correct property', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const data = responseJson.data;\r",
+							"    \r",
+							"    pm.expect(data).to.be.an('object');\r",
+							"    pm.expect(data).to.haveOwnProperty('id');\r",
+							"    pm.expect(data).to.haveOwnProperty('name');\r",
+							"    pm.expect(data).to.haveOwnProperty('comment');\r",
+							"    pm.expect(data).to.haveOwnProperty('imageUrl');\r",
+							"    pm.expect(data).to.haveOwnProperty('yumFactor');\r",
+							"    pm.expect(data).to.haveOwnProperty('createdAt');\r",
+							"    pm.expect(data).to.haveOwnProperty('updatedAt');\r",
+							"\r",
+							"    pm.expect(data.id).to.be.a('number');\r",
+							"    pm.expect(data.name).to.be.a('string');\r",
+							"    pm.expect(data.comment).to.be.a('string');\r",
+							"    pm.expect(data.imageUrl).to.be.a('string');\r",
+							"    pm.expect(data.yumFactor).to.be.a('string');\r",
+							"    pm.expect(data.createdAt).to.be.a('string');\r",
+							"    pm.expect(data.updatedAt).to.be.a('string');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Calymperes Moss 33 updated\",\r\n    \"comment\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus\",\r\n    \"imageUrl\": \"http://dummyimage.com/204x100.png/cc0000/ffffff\",\r\n    \"yumFactor\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/28",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a cake with invalid data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 422', () => {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('error');\r",
+							"     pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('error');\r",
+							"    pm.expect(responseJson.error.name).to.equals('name field is required');\r",
+							"    pm.expect(responseJson.statusCode).to.equals(422);\r",
+							"    pm.expect(responseJson.message).to.equals('Validation failed')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus\",\r\n    \"imageUrl\": \"http://dummyimage.com/204x100.png/cc0000/ffffff\",\r\n    \"yumFactor\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/23",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a cake with valid id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('success');\r",
+							"    pm.expect(responseJson.message).to.equals('success');\r",
+							"    pm.expect(responseJson.statusCode).to.equals(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/28",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a cake with invalid id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 404', () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should have correct property and value', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('statusCode');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('error');\r",
+							"    pm.expect(responseJson.message).to.equals('Cake with specified ID does not exist');\r",
+							"    pm.expect(responseJson.statusCode).to.equals(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cake-apii.herokuapp.com/api/cakes/24",
+					"protocol": "https",
+					"host": [
+						"cake-apii",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cakes",
+						"24"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

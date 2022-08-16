@@ -1,0 +1,538 @@
+{
+	"id": "7f48ea7c-8c08-4842-b19c-017508298bb3",
+	"name": "Ralali Cakes API Automation Case",
+	"timestamp": "2022-08-16T11:08:07.343Z",
+	"collection_id": "11143202-7a41ead1-cc7b-49b4-a595-b86b1cf14a95",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 45,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "fdd8f27c-8438-4c44-b86d-664046f52cce",
+			"name": "Get All Cakes",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/",
+			"time": 233,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"status code should be 200": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body status should be success": true,
+				"response body object should have correct property": true,
+				"response body data array should have contains correct property": true
+			},
+			"testPassFailCounts": {
+				"status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body status should be success": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body object should have correct property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body data array should have contains correct property": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				233
+			],
+			"allTests": [
+				{
+					"status code should be 200": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body status should be success": true,
+					"response body object should have correct property": true,
+					"response body data array should have contains correct property": true
+				}
+			]
+		},
+		{
+			"id": "041609ba-799c-44a2-aed4-c1c7ba2ea3d5",
+			"name": "Get a single cake with correct id",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/18",
+			"time": 208,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response code should be 200": true,
+				"response header Content-Type should be application/json": true,
+				"response body should an object": true,
+				"response body object should contain correct property": true,
+				"cake object should contain correct property and value": true
+			},
+			"testPassFailCounts": {
+				"response code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body object should contain correct property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"cake object should contain correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				208
+			],
+			"allTests": [
+				{
+					"response code should be 200": true,
+					"response header Content-Type should be application/json": true,
+					"response body should an object": true,
+					"response body object should contain correct property": true,
+					"cake object should contain correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "fe8e9054-a5fc-4ed1-8527-59b7d35ef1c7",
+			"name": "Get a single cake with invalid id",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/99",
+			"time": 214,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"response code should be 404": true,
+				"response header Content-Type should be application/json": true,
+				"response body should an object": true,
+				"response body object should contain correct property and value": true
+			},
+			"testPassFailCounts": {
+				"response code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body object should contain correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				214
+			],
+			"allTests": [
+				{
+					"response code should be 404": true,
+					"response header Content-Type should be application/json": true,
+					"response body should an object": true,
+					"response body object should contain correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "c9ee7283-89fb-44b4-8e43-c6418faa9bf9",
+			"name": "Create a new cakes with valid data",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/",
+			"time": 219,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"status code should be 201": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true,
+				"response body data should contain id": true
+			},
+			"testPassFailCounts": {
+				"status code should be 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body data should contain id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				219
+			],
+			"allTests": [
+				{
+					"status code should be 201": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true,
+					"response body data should contain id": true
+				}
+			]
+		},
+		{
+			"id": "838b2be3-b098-47d4-acc7-e2eb0ef97dba",
+			"name": "Create a new cake with invalid data",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/",
+			"time": 205,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity"
+			},
+			"tests": {
+				"status code should be 422": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"status code should be 422": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				205
+			],
+			"allTests": [
+				{
+					"status code should be 422": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "51bdd6de-9c85-43b6-a65c-bd1cb0ccc783",
+			"name": "Create a new cake with already exist data",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/",
+			"time": 219,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"status code should be 409": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"status code should be 409": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				219
+			],
+			"allTests": [
+				{
+					"status code should be 409": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "4756ac0c-2609-46f3-b693-b19f545a18e6",
+			"name": "Edit a cake with valid data",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/28",
+			"time": 221,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"status code should be 200": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true,
+				"response body data array should have contains correct property": true
+			},
+			"testPassFailCounts": {
+				"status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body data array should have contains correct property": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				221
+			],
+			"allTests": [
+				{
+					"status code should be 200": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true,
+					"response body data array should have contains correct property": true
+				}
+			]
+		},
+		{
+			"id": "a0e42272-5a39-43bc-b54a-5eb3231aff92",
+			"name": "Edit a cake with invalid data",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/23",
+			"time": 215,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity"
+			},
+			"tests": {
+				"status code should be 422": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"status code should be 422": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				215
+			],
+			"allTests": [
+				{
+					"status code should be 422": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "75b65893-b3b9-4302-9bf0-7b0a14084286",
+			"name": "Delete a cake with valid id",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/28",
+			"time": 234,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"status code should be 200": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"status code should be 200": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "553008c2-8c02-49ee-951e-46476ecbfa89",
+			"name": "Delete a cake with invalid id",
+			"url": "https://cake-apii.herokuapp.com/api/cakes/24",
+			"time": 214,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"status code should be 404": true,
+				"response header Content-Type should be application/json": true,
+				"response body should be an object": true,
+				"response body should have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"status code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response header Content-Type should be application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				214
+			],
+			"allTests": [
+				{
+					"status code should be 404": true,
+					"response header Content-Type should be application/json": true,
+					"response body should be an object": true,
+					"response body should have correct property and value": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2182,
+	"collection": {
+		"requests": [
+			{
+				"id": "fdd8f27c-8438-4c44-b86d-664046f52cce",
+				"method": "GET"
+			},
+			{
+				"id": "041609ba-799c-44a2-aed4-c1c7ba2ea3d5",
+				"method": "GET"
+			},
+			{
+				"id": "fe8e9054-a5fc-4ed1-8527-59b7d35ef1c7",
+				"method": "GET"
+			},
+			{
+				"id": "c9ee7283-89fb-44b4-8e43-c6418faa9bf9",
+				"method": "POST"
+			},
+			{
+				"id": "838b2be3-b098-47d4-acc7-e2eb0ef97dba",
+				"method": "POST"
+			},
+			{
+				"id": "51bdd6de-9c85-43b6-a65c-bd1cb0ccc783",
+				"method": "POST"
+			},
+			{
+				"id": "4756ac0c-2609-46f3-b693-b19f545a18e6",
+				"method": "PUT"
+			},
+			{
+				"id": "a0e42272-5a39-43bc-b54a-5eb3231aff92",
+				"method": "PUT"
+			},
+			{
+				"id": "75b65893-b3b9-4302-9bf0-7b0a14084286",
+				"method": "DELETE"
+			},
+			{
+				"id": "553008c2-8c02-49ee-951e-46476ecbfa89",
+				"method": "DELETE"
+			}
+		]
+	}
+}
